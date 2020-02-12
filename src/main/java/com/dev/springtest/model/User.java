@@ -47,7 +47,7 @@ public class User {
                 + ", name='" + name
                 + name
                 + '\''
-                + ", password='"
+                + ", password='" + password
                 + password
                 + '\''
                 + '}';
