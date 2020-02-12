@@ -43,12 +43,9 @@ public class User {
     public String toString() {
         return "User{"
                 + "id=" + id
-                + id
                 + ", name='" + name
-                + name
                 + '\''
                 + ", password='" + password
-                + password
                 + '\''
                 + '}';
     }
