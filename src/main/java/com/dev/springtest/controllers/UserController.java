@@ -8,6 +8,7 @@ import com.dev.springtest.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private AnnotationConfigApplicationContext annotationConfigApplicationContext =
-            new AnnotationConfigApplicationContext(AppConfig.class);
-    private UserService userService = annotationConfigApplicationContext.getBean(UserService.class);
+    @Autowired
+    private UserService userService;
 
     @GetMapping(value = "/inject")
     private String injectUser() {
