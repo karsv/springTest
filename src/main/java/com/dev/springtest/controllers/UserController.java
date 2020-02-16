@@ -1,6 +1,5 @@
 package com.dev.springtest.controllers;
 
-import com.dev.springtest.config.AppConfig;
 import com.dev.springtest.dto.UserResponseDto;
 import com.dev.springtest.model.User;
 import com.dev.springtest.service.UserService;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,8 +56,7 @@ public class UserController {
 
     @GetMapping(value = "{id}")
     private UserResponseDto getUser(@PathVariable(value = "id") Long id) {
-        List<User> list = userService.listUsers();
-        UserResponseDto userResponseDto = new UserResponseDto(list.get(id.intValue()));
+        UserResponseDto userResponseDto = new UserResponseDto(userService.getById(id));
         return userResponseDto;
     }
 
