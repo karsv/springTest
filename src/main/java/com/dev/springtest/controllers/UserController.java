@@ -4,8 +4,8 @@ import com.dev.springtest.dto.UserResponseDto;
 import com.dev.springtest.model.User;
 import com.dev.springtest.service.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,16 +47,21 @@ public class UserController {
 
     @GetMapping(value = "/")
     private List<UserResponseDto> getUsers() {
-        List<UserResponseDto> userResponseDtoList = new ArrayList<>();
-        for (User user : userService.listUsers()) {
-            userResponseDtoList.add(new UserResponseDto(user));
-        }
-        return userResponseDtoList;
+        return userService.listUsers()
+                .stream()
+                .map(this::userToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping(value = "{id}")
     private UserResponseDto getUser(@PathVariable(value = "id") Long id) {
-        UserResponseDto userResponseDto = new UserResponseDto(userService.getById(id));
+        return userToDto(userService.getById(id));
+    }
+
+    private UserResponseDto userToDto(User user) {
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setName(user.getName());
+        userResponseDto.setPassword(user.getPassword());
         return userResponseDto;
     }
 
