@@ -34,16 +34,10 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getById(Long id) {
-        Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            Query<User> query = session.createQuery("FROM User WHERE id = :id");
-            query.setParameter("id", id);
-            return query.getSingleResult();
+            return (User) session.createQuery("FROM User WHERE id = :id").getSingleResult();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw new RuntimeException("Exception when add user", e);
+            throw new RuntimeException("Exception when get user", e);
         }
     }
 

@@ -10,10 +10,10 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.dev.springtest.controllers"})
-public class Webconfig {
+public class WebConfig {
 
     @Bean
-    public InternalResourceViewResolver resolver() {
+    public InternalResourceViewResolver getResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/views/");
