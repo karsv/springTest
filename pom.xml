@@ -18,7 +18,7 @@
         <mysql.version>8.0.18</mysql.version>
         <hibernate.core.version>5.4.10.Final</hibernate.core.version>
         <hibernate.java8.version>5.4.10.Final</hibernate.java8.version>
-        <spring.version>5.2.3.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <maven.checkstyle.plugin.configLocation>
             https://raw.githubusercontent.com/mate-academy/style-guides/master/java/checkstyle.xml
         </maven.checkstyle.plugin.configLocation>
